@@ -2,12 +2,11 @@ import React, { useState } from 'react'
 import Button from '../UI/Button'
 import Card from '../UI/Card';
 import styles from './AddUser.module.css'
-import UsersList from './UsersList';
 
-const AddUser = () => {
+const AddUser = (props) => {
   const [username, setUsername] = useState("");
   const [age, setAge] = useState("");
-  const [users, setUsers] = useState([{name: "Asia", age: 37}]);
+
 
   const addUserHandler = (e) => {
     e.preventDefault();
@@ -20,7 +19,7 @@ const AddUser = () => {
       return;
     }
     console.log(username, age);
-    addToUsersHandler();
+    props.addToUsersHandler(username, age);
     clearInputs();
   };
 
@@ -43,9 +42,8 @@ const AddUser = () => {
     setAge("");
   };
 
-  const addToUsersHandler = () => {
-    setUsers([{ name: username, age }, ...users])
-  }
+
+
 
 
   return (
@@ -60,9 +58,6 @@ const AddUser = () => {
           <input id="age" type="number" value={age} onChange={enteredAgeHandler} ></input>
           <Button type="submit">Add User</Button>
         </form>
-      </Card>
-      <Card className={styles.input}>
-        <UsersList users={users} />
       </Card>
     </>
 
