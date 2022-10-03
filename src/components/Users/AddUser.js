@@ -19,21 +19,21 @@ const AddUser = (props) => {
       return;
     }
     console.log(username, age);
-    props.addToUsersHandler(username, age);
+    props.addToUsersListHandler(username, age);
     clearInputs();
   };
 
   const enteredUsernameHandler = (e) => {
-    if (e.target.value.trim().length === 0) {
-      return;
-    }
+    // if (e.target.value.trim().length === 0) {
+    //   return;
+    // }
     setUsername(e.target.value);
   }
 
   const enteredAgeHandler = (e) => {
-    if (e.target.value.trim().length === 0) {
-      return;
-    }
+    // if (e.target.value.trim().length === 0) {
+    //   return;
+    // }
     setAge(e.target.value);
   }
 

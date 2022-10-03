@@ -15,3 +15,7 @@
   padding: 0.5rem;
   cursor: pointer;
 }
+
+.users li:hover {
+ background: rgba(211, 211, 211, 0.163);
+}
