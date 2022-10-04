@@ -43,7 +43,9 @@ const AddUser = (props) => {
     setAge("");
   };
 
-  const clearModalMessage = () => {
+  const clearModalMessage = (e) => {
+    e.nativeEvent.stopImmediatePropagation();
+    e.stopPropagation();
     setModalMessage();
   }
 
