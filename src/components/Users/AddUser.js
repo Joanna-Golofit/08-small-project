@@ -7,26 +7,26 @@ import styles from './AddUser.module.css'
 const AddUser = (props) => {
   const [username, setUsername] = useState("");
   const [age, setAge] = useState("");
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
   const modalMessages = [
     { title: "!", message: "Empty input(s) not allowed!" },
     { title: "!", message: "Age has to be greater than 0!" },
     { title: "!", message: "Empty input(s) not allowed!" }
   ];
-  const [modalMessage, setModalMessage] = useState("");
+  const [modalMessage, setModalMessage] = useState();
 
   const addUserHandler = (e) => {
     e.preventDefault();
     if (username.trim().length === 0 || age.trim().length === 0) {
       console.log("Empty input(s) not allowed!");
       setModalMessage(modalMessages[0])
-      showModalHandler();
+      // showModalHandler();
       return;
     }
     if (Number(age) < 1) {
       console.log("Age has to be greater than 0!");
       setModalMessage(modalMessages[1]);
-      showModalHandler();
+      // showModalHandler();
       return;
     }
     console.log(username, age);
@@ -53,8 +53,12 @@ const AddUser = (props) => {
     setAge("");
   };
 
-  const showModalHandler = () => {
-    setShowModal(!showModal);
+  // const showModalHandler = () => {
+  //   setShowModal(!showModal);
+  // }
+
+  const clearModalMessage = () => {
+    setModalMessage();
   }
 
 
@@ -72,7 +76,7 @@ const AddUser = (props) => {
           <Button type="submit">Add User</Button>
         </form>
       </Card>
-      {showModal && <ErrorModal showModalHandler={showModalHandler} modalMessage={modalMessage} />}
+      {modalMessage && <ErrorModal clearModalMessage={clearModalMessage} modalMessage={modalMessage} />}
     </>
 
   )
