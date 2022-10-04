@@ -44,17 +44,13 @@ const AddUser = (props) => {
   };
 
   const clearModalMessage = (e) => {
-    e.nativeEvent.stopImmediatePropagation();
-    e.stopPropagation();
     setModalMessage();
   }
 
   return (
     <>
       <Card className={styles.input}>
-        <form
-          onSubmit={addUserHandler}
-        >
+        <form onSubmit={addUserHandler}>
           <label htmlFor='username'>Username</label>
           <input id="username" type="text" value={username} onChange={enteredUsernameHandler} ></input>
           <label htmlFor='age'>Age (years)</label>
