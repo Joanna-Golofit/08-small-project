@@ -7,11 +7,9 @@ import styles from './AddUser.module.css'
 const AddUser = (props) => {
   const [username, setUsername] = useState("");
   const [age, setAge] = useState("");
-  // const [showModal, setShowModal] = useState(false);
   const modalMessages = [
-    { title: "!", message: "Empty input(s) not allowed!" },
-    { title: "!", message: "Age has to be greater than 0!" },
-    { title: "!", message: "Empty input(s) not allowed!" }
+    { title: "Invalid input", message: "Empty input(s) not allowed!" },
+    { title: "Invalid age", message: "Age has to be greater than 0!" },
   ];
   const [modalMessage, setModalMessage] = useState();
 
@@ -20,13 +18,11 @@ const AddUser = (props) => {
     if (username.trim().length === 0 || age.trim().length === 0) {
       console.log("Empty input(s) not allowed!");
       setModalMessage(modalMessages[0])
-      // showModalHandler();
       return;
     }
     if (Number(age) < 1) {
       console.log("Age has to be greater than 0!");
       setModalMessage(modalMessages[1]);
-      // showModalHandler();
       return;
     }
     console.log(username, age);
@@ -35,16 +31,10 @@ const AddUser = (props) => {
   };
 
   const enteredUsernameHandler = (e) => {
-    // if (e.target.value.trim().length === 0) {
-    //   return;
-    // }
     setUsername(e.target.value);
   }
 
   const enteredAgeHandler = (e) => {
-    // if (e.target.value.trim().length === 0) {
-    //   return;
-    // }
     setAge(e.target.value);
   }
 
@@ -53,15 +43,9 @@ const AddUser = (props) => {
     setAge("");
   };
 
-  // const showModalHandler = () => {
-  //   setShowModal(!showModal);
-  // }
-
   const clearModalMessage = () => {
     setModalMessage();
   }
-
-
 
   return (
     <>
